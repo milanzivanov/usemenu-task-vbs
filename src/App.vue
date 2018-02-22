@@ -78,13 +78,11 @@
     import Edit from './components/Edit.vue';
 
 export default {
-
     name: 'app',
     components: {
       'app-add': Add,
       'app-edit': Edit
     },
-
     data () {
         return {
         // v-imodel

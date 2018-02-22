@@ -90,13 +90,14 @@
 <script>
 
   export default {
+
+    // props in the action
     props: {
       currencies: {
         type: Array,
         required: true
       }
     },
-
     name: 'Add',
     data () {
       return {
@@ -104,21 +105,19 @@
         symbol: ''
       }
     },
-
     methods : {
-    addId() {
-      this.$validator.validateAll().then((result) => {
-        if (result) {
-          this.currencies.push({id: this.id});
-          this.id = '';
-          this.symbol = '';
-        } else {
-          console.log('Not valid');
-        }
-      })
+      addId() {
+        this.$validator.validateAll().then((result) => {
+          if (result) {
+            this.currencies.push({id: this.id});
+            this.id = '';
+            this.symbol = '';
+          } else {
+            console.log('Not valid');
+          }
+        })
+      }
     }
-  }
-
   }
 </script>
 

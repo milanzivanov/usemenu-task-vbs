@@ -16,11 +16,6 @@ export default new Router({
       path: '/add',
       name: 'add',
       component: Add
-    },
-    {
-      path: '/currency',
-      name: 'currency',
-      component: App
     }
   ]
 })
