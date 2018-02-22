@@ -1,20 +1,5 @@
 <template>
     <div class="add-component">
-        <!-- v-imodel -->
-        <!-- <form @submit.prevent="addId">
-            <input type="text"
-                   placeholder="Enter a currency you want..."
-                   v-model="id">
-        </form> -->
-
-        <!-- props in the action -->
-        <!-- <p>{{currencies}}</p> -->
-        <!-- <ul>
-            <li v-for="(data, index) in currencies" :key='index'>
-              {{ index + 1 }}. {{data.id}}</li>
-        </ul> -->
-
-
         <form @submit.prevent="addId">
             <div class="container-fluid px-0">
                 <div class="row">
@@ -44,7 +29,14 @@
                                    class="form-control"
                                    id="inputCurrency"
                                    placeholder="Currency code"
-                                   v-model="id">
+                                   v-model="id"
+                                   v-validate="'min:2'"
+                                   name="id">
+                            <p class="alert
+                                      alert-danger"
+                                      role="alert"
+                               v-if="errors.has('id')">{{ errors.first('id')}}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -60,10 +52,19 @@
                         </label>
                         <div class="col-md-8">
                             <input type="text"
-                                  class="form-control"
-                                  id="inpuSymbol"
-                                  placeholder="Currency symbol"
-                                  v-model="symbol">
+                                   class="form-control"
+                                   id="inpuSymbol"
+                                   placeholder="Currency symbol"
+                                   v-model="symbol"
+                                   v-validate="'required'"
+                                   name="symbol">
+
+                            <p class="alert
+                                      alert-danger"
+                                      role="alert"
+                                      v-show="errors.has('symbol')">
+                               {{ errors.first('symbol') }}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -85,6 +86,7 @@
 
 <script>
 
+// proveriti!!!
   import App from './Add.vue';
 
   export default {
@@ -108,10 +110,21 @@
     },
 
     methods : {
+    // addId() {
+    //     this.currencies.push({id: this.id});
+    //     this.id = '';
+    //     this.symbol = '';
+    // }
     addId() {
-        this.currencies.push({id: this.id});
-        this.id = '';
-        this.symbol = '';
+      this.$validator.validateAll().then((result) => {
+        if (result) {
+          this.currencies.push({id: this.id});
+          this.id = '';
+          this.symbol = '';
+        } else {
+          console.log('Not valid');
+        }
+      })
     }
   }
 

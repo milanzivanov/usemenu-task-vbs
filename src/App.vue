@@ -1,86 +1,88 @@
 <template>
   <div id="app">
-    <div class="header
-                mt-2">
-      <div class="container-fluid">
-          <div class="row
-                      align-items-center">
-              <div class="col-md-3
-                          p-2">
-                  <router-link to="/">
-                      <a href="#" class="navbar-brand">
-                        <img src="./assets/usemenu.png" alt="" width="40px" height="40px">
-                      </a>
-                  </router-link>
-              </div>
-              <div class="col-md-9
-                          p-2">
-                  <i class="fas fa-euro-sign"></i>
-                  <i class="fa fa-camera-retro"></i>
-                  <h5 class="d-inline
-                             p-2
-                             text-white">
-                      Currency
-                  </h5>
-              </div>
-          </div>
+      <div class="header
+                  mt-2">
+        <div class="container-fluid">
+            <div class="row
+                        align-items-center">
+                <div class="col-md-3
+                            p-2">
+                    <router-link to="/">
+                        <a href="#" class="navbar-brand">
+                          <img src="./assets/usemenu.png" alt="" width="40px" height="40px">
+                        </a>
+                    </router-link>
+                </div>
+                <div class="col-md-9
+                            p-2">
+                    <i class="fa fa-dollar-sign"></i>
+                    <i class="fa fa-camera-retro"></i>
+                    <h5 class="d-inline
+                              p-2
+                              text-white">
+                        Currency
+                    </h5>
+                </div>
+            </div>
+        </div>
       </div>
-    </div>
 
-	<div class="main-content">
-      <div class="container-fluid
-                  h-100">
-          <div class="row
+      <div class="main-content">
+          <div class="container-fluid
                       h-100">
-              <div class="col-md-3
-                          pr-4
-                          bg-custom
+              <div class="row
                           h-100">
-                  <ul class="list-group
-                             list-group-flush
-                             list-group-bg">
-                    <li class="list-group-item
-                               border-bottom-bg
-                               px-0">
-                        Currency List
-                    </li>
-                    <li class="list-group-item
-                               d-flex
-                               justify-content-between align-items-center
-                               px-0"
-                        v-for="(data, index) in currencies" :key='index'> {{data.id}}
-                        <i v-on:click="remove(index)">
-                          delite
-                        </i>
-                    </li>
-                    <li class="list-group-item
-                               px-0
-                               border-bottom-bg">
-                        <router-link to="/add">
-                            <i class="fa fa-plus-circle"></i>
-                            Add currency
-                        </router-link>
-                    </li>
-                  </ul>
-              </div>
-              <div class="col-md-9
-                          bg-primary-custum">
-                  <router-view v-bind:currencies="currencies"/>
+                  <div class="col-md-3
+                              pr-4
+                              bg-custom
+                              h-100">
+                      <ul class="list-group
+                                list-group-flush
+                                list-group-bg">
+                        <li class="list-group-item
+                                  border-bottom-bg
+                                  px-0">
+                            Currency List
+                        </li>
+                        <li class="list-group-item
+                                  d-flex
+                                  justify-content-between align-items-center
+                                  px-0"
+                            v-for="(data, index) in currencies" :key='index'> {{data.id}}
+                            <i v-on:click="remove(index)">
+                              delite
+                            </i>
+                        </li>
+                        <li class="list-group-item
+                                  px-0
+                                  border-bottom-bg">
+                            <router-link to="/add">
+                                <i class="fa fa-plus-circle"></i>
+                                Add currency
+                            </router-link>
+                        </li>
+                      </ul>
+                  </div>
+                  <div class="col-md-9
+                              bg-primary-custum">
+                      <router-view v-bind:currencies="currencies"/>
+                  </div>
               </div>
           </div>
       </div>
-	</div>
   </div>
 </template>
 
 <script>
     import  Add from './components/Add.vue';
+    import Edit from './components/Edit.vue';
 
 export default {
 
     name: 'app',
     components: {
-      'app-add': Add
+      'app-add': Add,
+      'app-edit': Edit
     },
 
     data () {
