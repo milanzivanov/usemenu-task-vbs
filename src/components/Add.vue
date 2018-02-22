@@ -3,7 +3,8 @@
         <form @submit.prevent="addId">
             <div class="container-fluid px-0">
                 <div class="row">
-                    <div class="col-md-8 px-0">
+                    <div class="col-md-8
+                                px-0">
                         <ul class="list-group
                                   list-group-flush mx-4">
                             <li class="list-group-item
@@ -11,71 +12,73 @@
                                        px-0">
                                 Add Currency
                             </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="form-group
-                            row
-                            py-3
-                            m-0">
-                    <div class="col-md-8 d-flex px-0 border-input-bottom">
-                        <label for="inputCurrency"
-                              class="col-md-4
-                                      col-form-label">
-                            Currency Code
-                        </label>
-                        <div class="col-md-8">
-                            <input type="text"
-                                   class="form-control"
-                                   id="inputCurrency"
-                                   placeholder="Currency code"
-                                   v-model="id"
-                                   v-validate="'min:2'"
-                                   name="id">
-                            <p class="alert
-                                      alert-danger"
-                                      role="alert"
-                               v-if="errors.has('id')">{{ errors.first('id')}}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group
-                            row
-                            py-3
-                            m-0">
-                    <div class="col-md-8 d-flex px-0      border-input-bottom">
-                        <label for="inpuSymbol"
-                              class="col-md-4
-                                      col-form-label">
-                            Currency Symbol
-                        </label>
-                        <div class="col-md-8">
-                            <input type="text"
-                                   class="form-control"
-                                   id="inpuSymbol"
-                                   placeholder="Currency symbol"
-                                   v-model="symbol"
-                                   v-validate="'required'"
-                                   name="symbol">
+                  <div class="form-group
+                              row
+                              py-3
+                              m-0">
+                      <div class="col-md-12 d-flex px-0 border-input-bottom">
+                          <label for="inputCurrency"
+                                class="col-md-4
+                                      col-form-label
+                                      pl-0">
+                              Currency Code
+                          </label>
+                          <div class="col-md-8">
+                              <input type="text"
+                                    class="form-control"
+                                    id="inputCurrency"
+                                    placeholder="Currency code"
+                                    v-model="id"
+                                    v-validate="'min:2'"
+                                    name="id">
+                              <p class="alert
+                                        alert-danger"
+                                        role="alert"
+                                v-if="errors.has('id')">{{ errors.first('id')}}
+                              </p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="form-group
+                              row
+                              py-3
+                              m-0">
+                      <div class="col-md-12 d-flex px-0      border-input-bottom">
+                          <label for="inpuSymbol"
+                                class="col-md-4
+                                        col-form-label
+                                        pl-0">
+                              Currency Symbol
+                          </label>
+                          <div class="col-md-8">
+                              <input type="text"
+                                    class="form-control"
+                                    id="inpuSymbol"
+                                    placeholder="Currency symbol"
+                                    v-model="symbol"
+                                    v-validate="'required'"
+                                    name="symbol">
 
-                            <p class="alert
-                                      alert-danger"
-                                      role="alert"
-                                      v-show="errors.has('symbol')">
-                               {{ errors.first('symbol') }}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-md-8 py-2">
-                        <button type="submit"
-                                class="btn
-                                      btn-custum-bg
-                                      pull-right">
-                            SUBMIT
-                        </button>
+                              <p class="alert
+                                        alert-danger"
+                                        role="alert"
+                                        v-show="errors.has('symbol')">
+                                {{ errors.first('symbol') }}
+                              </p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="form-group row">
+                      <div class="col-md-12 py-2">
+                          <button type="submit"
+                                  class="btn
+                                        btn-custum-bg
+                                        pull-right">
+                              SUBMIT
+                          </button>
+                      </div>
+                  </div>
+                        </ul>
                     </div>
                 </div>
 
@@ -86,13 +89,7 @@
 
 <script>
 
-// proveriti!!!
-  import App from './Add.vue';
-
   export default {
-
-    // props in the action
-    // props: ['currencies'],
     props: {
       currencies: {
         type: Array,
@@ -101,7 +98,6 @@
     },
 
     name: 'Add',
-
     data () {
       return {
         id: '',
@@ -110,11 +106,6 @@
     },
 
     methods : {
-    // addId() {
-    //     this.currencies.push({id: this.id});
-    //     this.id = '';
-    //     this.symbol = '';
-    // }
     addId() {
       this.$validator.validateAll().then((result) => {
         if (result) {
@@ -145,6 +136,10 @@
 .btn-custum-bg {
     background-color: #ff6500;
     color: #fff;
+}
+
+.list-group-item {
+    border-bottom: 1px solid #ff6500 !important;
 }
 
 </style>

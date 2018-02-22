@@ -49,7 +49,7 @@
                                   justify-content-between align-items-center
                                   px-0"
                             v-for="(data, index) in currencies" :key='index'> {{data.id}}
-                            <i v-on:click="remove(index)">
+                            <i v-on:click="remove(index)" class="delite-currency">
                               delite
                             </i>
                         </li>
@@ -171,13 +171,18 @@ body, html {
     background-color: transparent;
 }
 
- input {
-    width: calc(100% - 40px);
-    border: 0;
-    padding: 20px;
-    font-size: 1.3em;
-    background-color: #323333;
-    color: #687F7F;
-  }
+.list-group-item:hover i.delite-currency {
+    display: inline-block;
+    color: indianred;
+}
+
+.delite-currency {
+    cursor: pointer;
+    display: none;
+    &:hover {
+        transition: 0.5s ease-in-out;
+        color: indianred;
+    }
+}
 
 </style>
