@@ -15,8 +15,8 @@
                 </div>
                 <div class="col-md-9
                             p-2">
-                    <i class="fa fa-dollar-sign"></i>
-                    <i class="fa fa-camera-retro"></i>
+                    <i class="fa fa-at"></i>
+                    <i class="fas fa-euro-sign"></i>
                     <h5 class="d-inline
                               p-2
                               text-white">
@@ -161,7 +161,7 @@ body, html {
     color: #ff6500 !important;
 }
 
-.fa.fa-camera-retro {
+.fa.fa-at {
     color: #fff;
 }
 
